@@ -1,9 +1,16 @@
 import { z } from 'zod';
 import { createIdSchema, createBaseSchema } from './common';
 
+export const ASSIGNEE_VALIDATION_MESSAGES = {
+  NAME_REQUIRED: '担当者名を入力してください',
+  NAME_OVER_MAX_LENGTH: '担当者名は20文字以内で入力してください',
+} as const;
+
 export const createAssigneeBaseSchema = () =>
   z.object({
-    name: z.string({ required_error: '' }).max(50, ''),
+    name: z
+      .string({ required_error: ASSIGNEE_VALIDATION_MESSAGES.NAME_REQUIRED })
+      .max(50, ASSIGNEE_VALIDATION_MESSAGES.NAME_OVER_MAX_LENGTH),
     userId: createIdSchema().or(z.null()),
   });
 
