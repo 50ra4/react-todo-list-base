@@ -1,5 +1,7 @@
+import isAfter from 'date-fns/isAfter';
 import { z } from 'zod';
 import { baseSchema, createDateStringSchema, createIdSchema } from './common';
+import { dateStringToDate } from 'src/utils/date';
 
 export const TASK_VALIDATION_MESSAGES = {
   TITLE_REQUIRED: 'タイトルを入力してください',
@@ -25,17 +27,32 @@ export const taskBaseSchema = z.object({
     maxMessage: TASK_VALIDATION_MESSAGES.START_DATE_OVER_MAX_LENGTH,
     formatMessage: TASK_VALIDATION_MESSAGES.START_DATE_INVALID_FORMAT,
   }).or(z.null()),
-  // TODO: 複合バリデーション
   endDate: createDateStringSchema({
     maxMessage: TASK_VALIDATION_MESSAGES.END_DATE_INVALID_FORMAT,
     formatMessage: TASK_VALIDATION_MESSAGES.END_DATE_OVER_MAX_LENGTH,
-  }).or(z.null()),
+  }),
   statusId: createIdSchema().or(z.null()),
   assigneeId: createIdSchema().or(z.null()),
   categoryId: createIdSchema().or(z.null()),
 });
 
-export const taskSchema = taskBaseSchema.merge(baseSchema);
+const isStartDateAfterEndDate = (start: string, end: string) => {
+  const startDate = dateStringToDate(start, 'yyyy-MM-dd');
+  const endDate = dateStringToDate(end, 'yyyy-MM-dd');
+  return isAfter(startDate, endDate);
+};
+
+export const taskSchema = baseSchema
+  .merge(taskBaseSchema)
+  .superRefine(({ startDate, endDate }, ctx) => {
+    if (!!startDate && isStartDateAfterEndDate(startDate, endDate)) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: TASK_VALIDATION_MESSAGES.START_DATE_AFTER_END_DATE,
+        path: ['startDate'],
+      });
+    }
+  });
 
 export type Task = z.infer<typeof taskSchema>;
 

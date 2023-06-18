@@ -21,6 +21,7 @@
     "generate-gh-pages": "BASE_PATH=/vite-react-ts-template/ npm run build && rm -rf docs && cp -r dist docs && npm run build-storybook && cp gh-pages/404.html docs"
   },
   "dependencies": {
+    "date-fns": "2.30.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-router-dom": "6.12.1",
