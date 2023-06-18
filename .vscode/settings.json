@@ -9,5 +9,9 @@
     "source.fixAll.eslint": true
   },
   // default formatter setting is prettier
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // for Tailwind CSS
+  "editor.quickSuggestions": {
+    "strings": true
+  }
 }
