@@ -10,6 +10,7 @@ const config: Config.InitialOptions = {
     '^@/components/(.*)$': '<rootDir>/src/presentation/components/$1',
     '^src/(.*)$': '<rootDir>/src/$1',
   },
+  setupFilesAfterEnv: ['<rootDir>/src/jest.setup.ts'],
 };
 
 export default config;
