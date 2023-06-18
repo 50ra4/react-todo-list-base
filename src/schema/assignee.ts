@@ -9,8 +9,9 @@ export const ASSIGNEE_VALIDATION_MESSAGES = {
 export const createAssigneeBaseSchema = () =>
   z.object({
     name: z
-      .string({ required_error: ASSIGNEE_VALIDATION_MESSAGES.NAME_REQUIRED })
-      .max(50, ASSIGNEE_VALIDATION_MESSAGES.NAME_OVER_MAX_LENGTH),
+      .string()
+      .min(1, ASSIGNEE_VALIDATION_MESSAGES.NAME_REQUIRED)
+      .max(20, ASSIGNEE_VALIDATION_MESSAGES.NAME_OVER_MAX_LENGTH),
     userId: createIdSchema().or(z.null()),
   });
 
