@@ -1,11 +1,8 @@
 import { z } from 'zod';
-import {
-  ASSIGNEE_VALIDATION_MESSAGES,
-  createAssigneeBaseSchema,
-} from './assignee';
+import { ASSIGNEE_VALIDATION_MESSAGES, assigneeBaseSchema } from './assignee';
 
 describe('assignee schema', () => {
-  const assigneeSchema = createAssigneeBaseSchema();
+  const assigneeSchema = assigneeBaseSchema;
   const validAssigneeSchema: z.infer<typeof assigneeSchema> = {
     name: '鈴木一郎',
     userId: null,

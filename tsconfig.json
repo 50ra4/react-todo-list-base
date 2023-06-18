@@ -19,7 +19,8 @@
     "paths": {
       "@/components/*": ["src/presentation/components/*"],
       "src/*": ["src/*"]
-    }
+    },
+    "noErrorTruncation": true
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]

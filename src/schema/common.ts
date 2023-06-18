@@ -14,9 +14,8 @@ export const createDateStringSchema = <T extends string>({
     .max(11, maxMessage)
     .regex(/\d{4}-\d{2}-\d{2}/, formatMessage);
 
-export const createBaseSchema = () =>
-  z.object({
-    id: createIdSchema(),
-    createdAt: z.string().datetime(),
-    updatedAt: z.string().datetime(),
-  });
+export const baseSchema = z.object({
+  id: createIdSchema(),
+  createdAt: z.string().datetime(),
+  updatedAt: z.string().datetime(),
+});

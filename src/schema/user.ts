@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { createBaseSchema } from './common';
+import { baseSchema } from './common';
 
 export const USER_VALIDATION_MESSAGES = {
   EMAIL_REQUIRED: 'Emailを入力してください',
@@ -12,25 +12,21 @@ export const USER_VALIDATION_MESSAGES = {
     'パスワードには大小英数字を最低でも1字ずつ含めてください',
 } as const;
 
-const createUserEmailSchema = () =>
-  z
-    .string({ required_error: USER_VALIDATION_MESSAGES.EMAIL_REQUIRED })
-    .email(USER_VALIDATION_MESSAGES.EMAIL_INVALID_FORMAT);
+const emailSchema = z
+  .string({ required_error: USER_VALIDATION_MESSAGES.EMAIL_REQUIRED })
+  .email(USER_VALIDATION_MESSAGES.EMAIL_INVALID_FORMAT);
 
 // TODO:
-const createUserPasswordSchema = () =>
-  z
-    .string({ required_error: USER_VALIDATION_MESSAGES.PASSWORD_REQUIRED })
-    .min(8, USER_VALIDATION_MESSAGES.PASSWORD_UNDER_MIN_LENGTH)
-    .max(24, USER_VALIDATION_MESSAGES.PASSWORD_OVER_MAX_LENGTH);
+const userPasswordSchema = z
+  .string({ required_error: USER_VALIDATION_MESSAGES.PASSWORD_REQUIRED })
+  .min(8, USER_VALIDATION_MESSAGES.PASSWORD_UNDER_MIN_LENGTH)
+  .max(24, USER_VALIDATION_MESSAGES.PASSWORD_OVER_MAX_LENGTH);
 
-export const createUserBaseSchema = () =>
-  z.object({
-    email: createUserEmailSchema(),
-    password: createUserPasswordSchema(),
-  });
+export const userBaseSchema = z.object({
+  email: emailSchema,
+  password: userPasswordSchema,
+});
 
-export const createUserSchema = () =>
-  z.intersection(createBaseSchema(), createUserBaseSchema());
+export const createUserSchema = baseSchema.merge(userBaseSchema);
 
-export type User = z.infer<ReturnType<typeof createUserSchema>>;
+export type User = z.infer<typeof createUserSchema>;

@@ -1,9 +1,5 @@
 import { z } from 'zod';
-import {
-  createBaseSchema,
-  createDateStringSchema,
-  createIdSchema,
-} from './common';
+import { baseSchema, createDateStringSchema, createIdSchema } from './common';
 
 export const TASK_VALIDATION_MESSAGES = {
   TITLE_REQUIRED: 'タイトルを入力してください',
@@ -17,41 +13,38 @@ export const TASK_VALIDATION_MESSAGES = {
   STATUS_OVER_MAX_LENGTH: 'タスクの状態は20文字以内で入力してください',
 } as const;
 
-export const createTaskBaseSchema = () =>
-  z.object({
-    title: z
-      .string({ required_error: TASK_VALIDATION_MESSAGES.TITLE_REQUIRED })
-      .max(50, TASK_VALIDATION_MESSAGES.TITLE_OVER_MAX_LENGTH),
-    description: z
-      .string()
-      .max(200, TASK_VALIDATION_MESSAGES.DESCRIPTION_OVER_MAX_LENGTH),
-    startDate: createDateStringSchema({
-      maxMessage: TASK_VALIDATION_MESSAGES.START_DATE_OVER_MAX_LENGTH,
-      formatMessage: TASK_VALIDATION_MESSAGES.START_DATE_INVALID_FORMAT,
-    }).or(z.null()),
-    // TODO: 複合バリデーション
-    endDate: createDateStringSchema({
-      maxMessage: TASK_VALIDATION_MESSAGES.END_DATE_INVALID_FORMAT,
-      formatMessage: TASK_VALIDATION_MESSAGES.END_DATE_OVER_MAX_LENGTH,
-    }).or(z.null()),
-    statusId: createIdSchema().or(z.null()),
-    assigneeId: createIdSchema().or(z.null()),
-    categoryId: createIdSchema().or(z.null()),
-  });
+export const taskBaseSchema = z.object({
+  title: z
+    .string({ required_error: TASK_VALIDATION_MESSAGES.TITLE_REQUIRED })
+    .max(50, TASK_VALIDATION_MESSAGES.TITLE_OVER_MAX_LENGTH),
+  description: z
+    .string()
+    .max(200, TASK_VALIDATION_MESSAGES.DESCRIPTION_OVER_MAX_LENGTH),
+  startDate: createDateStringSchema({
+    maxMessage: TASK_VALIDATION_MESSAGES.START_DATE_OVER_MAX_LENGTH,
+    formatMessage: TASK_VALIDATION_MESSAGES.START_DATE_INVALID_FORMAT,
+  }).or(z.null()),
+  // TODO: 複合バリデーション
+  endDate: createDateStringSchema({
+    maxMessage: TASK_VALIDATION_MESSAGES.END_DATE_INVALID_FORMAT,
+    formatMessage: TASK_VALIDATION_MESSAGES.END_DATE_OVER_MAX_LENGTH,
+  }).or(z.null()),
+  statusId: createIdSchema().or(z.null()),
+  assigneeId: createIdSchema().or(z.null()),
+  categoryId: createIdSchema().or(z.null()),
+});
 
-export const createTaskSchema = () =>
-  z.intersection(createBaseSchema(), createTaskBaseSchema());
+export const taskSchema = baseSchema.merge(taskBaseSchema);
 
-export type Task = z.infer<ReturnType<typeof createTaskSchema>>;
+export type Task = z.infer<typeof taskSchema>;
 
-export const createTaskStatusBaseSchema = () =>
+export const taskStatusBaseSchema = () =>
   z.object({
     name: z
       .string({ required_error: TASK_VALIDATION_MESSAGES.STATUS_REQUIRED })
       .max(20, TASK_VALIDATION_MESSAGES.STATUS_OVER_MAX_LENGTH),
   });
 
-export const createTaskStatusSchema = () =>
-  z.intersection(createBaseSchema(), createTaskStatusBaseSchema());
+export const taskStatusSchema = baseSchema.merge(taskStatusBaseSchema());
 
-export type TaskStatus = z.infer<ReturnType<typeof createTaskStatusSchema>>;
+export type TaskStatus = z.infer<typeof taskStatusSchema>;
