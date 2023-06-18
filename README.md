@@ -1,4 +1,4 @@
-# vite-react-ts-template
+# react-todo-list-base
 
 このプロジェクトは Vite、TypeScript、React を用いた Web アプリケーション開発向けの Template です。
 一部、サンプルとなるソースコードを含んでいます。
