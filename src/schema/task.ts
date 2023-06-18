@@ -7,6 +7,7 @@ export const TASK_VALIDATION_MESSAGES = {
   DESCRIPTION_OVER_MAX_LENGTH: '説明は200文字以内で入力してください',
   START_DATE_OVER_MAX_LENGTH: '開始日を正しく入力してください',
   START_DATE_INVALID_FORMAT: '開始日を正しく入力してください',
+  START_DATE_AFTER_END_DATE: '開始日を期限より前の日付を入力してください',
   END_DATE_OVER_MAX_LENGTH: '期限を正しく入力してください',
   END_DATE_INVALID_FORMAT: '期限を正しく入力してください',
   STATUS_REQUIRED: 'タスクの状態を入力してください',
@@ -34,7 +35,7 @@ export const taskBaseSchema = z.object({
   categoryId: createIdSchema().or(z.null()),
 });
 
-export const taskSchema = baseSchema.merge(taskBaseSchema);
+export const taskSchema = taskBaseSchema.merge(baseSchema);
 
 export type Task = z.infer<typeof taskSchema>;
 
