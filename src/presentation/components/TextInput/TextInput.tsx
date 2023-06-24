@@ -8,11 +8,21 @@ type TextInputProps = {
   value?: string;
   placeholder?: string;
   isInvalid?: boolean;
+  describedId?: string;
 };
 
 export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
   function TextInput(
-    { className, id, name, type = 'text', placeholder, isInvalid, value },
+    {
+      className,
+      id,
+      name,
+      type = 'text',
+      placeholder,
+      isInvalid,
+      value,
+      describedId,
+    },
     ref,
   ) {
     return (
@@ -31,6 +41,7 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
         name={name}
         placeholder={placeholder}
         value={value}
+        aria-describedby={describedId}
       />
     );
   },

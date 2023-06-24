@@ -33,6 +33,8 @@ export const TextForm = React.forwardRef<HTMLInputElement, TextFormProps>(
     },
     ref,
   ) {
+    const descriptionId = `${id}-description`;
+
     return (
       <div
         className={`
@@ -45,7 +47,11 @@ export const TextForm = React.forwardRef<HTMLInputElement, TextFormProps>(
             formType={required ? 'required' : 'none'}
             label={label}
           />
-          <FormDescription className="pt-1.5" descriptions={descriptions} />
+          <FormDescription
+            className="pt-1.5"
+            id={descriptionId}
+            descriptions={descriptions}
+          />
         </div>
         <div className="basis-2/3 mt-3 sm:mt-0">
           <TextInput
@@ -57,6 +63,7 @@ export const TextForm = React.forwardRef<HTMLInputElement, TextFormProps>(
             value={value}
             placeholder={placeholder}
             isInvalid={!!errorMessage}
+            describedId={descriptionId}
           />
           {!!errorMessage && <FormError message={errorMessage} />}
         </div>
