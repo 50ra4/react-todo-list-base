@@ -1,52 +1,37 @@
 import React from 'react';
-import './Button.css';
 
-interface ButtonProps {
-  /**
-   * Is this the principal call to action on the page?
-   */
-  primary?: boolean;
-  /**
-   * What background color to use
-   */
-  backgroundColor?: string;
-  /**
-   * How large should the button be?
-   */
-  size?: 'small' | 'medium' | 'large';
-  /**
-   * Button contents
-   */
-  label: string;
-  /**
-   * Optional click handler
-   */
+type ButtonProps = {
+  className?: string;
+  color: 'primary' | 'secondary';
+  disabled?: boolean;
   onClick?: () => void;
-}
+  children: React.ReactNode;
+};
 
-/**
- * Primary UI component for user interaction
- */
-export const Button = ({
-  primary = false,
-  size = 'medium',
-  backgroundColor,
-  label,
-  ...props
-}: ButtonProps) => {
-  const mode = primary
-    ? 'storybook-button--primary'
-    : 'storybook-button--secondary';
+export const Button = React.forwardRef(function Button({
+  className,
+  color,
+  disabled,
+  onClick,
+  children,
+}: ButtonProps) {
   return (
     <button
-      type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode].join(
-        ' ',
-      )}
-      style={{ backgroundColor }}
-      {...props}
+      className={`
+      text-base
+      rounded-3xl
+      px-4 py-2.5
+      ${
+        color === 'primary'
+          ? 'bg-gray-300 text-gray-800'
+          : 'bg-gray-700 text-white'
+      }
+      ${disabled ? 'bg-opacity-50' : ''}
+      ${className}`}
+      disabled={disabled}
+      onClick={onClick}
     >
-      {label}
+      {children}
     </button>
   );
-};
+});
