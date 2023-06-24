@@ -10,6 +10,9 @@ type InputTextProps = {
   isInvalid?: boolean;
 };
 
+/**
+ * FIXME: TextInputに名前を変更する
+ */
 export const InputText = React.forwardRef<HTMLInputElement, InputTextProps>(
   function InputText(
     { className, id, name, type = 'text', placeholder, isInvalid, value },
