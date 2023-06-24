@@ -1,0 +1,2 @@
+import{j as s}from"./jsx-runtime-6eef64cc.js";function r({className:e,message:a}){return s.jsx("p",{role:"alert","aria-live":"assertive",className:`text-base text-red-600 ${e}`,children:a})}try{r.displayName="FormError",r.__docgenInfo={description:"",displayName:"FormError",props:{className:{defaultValue:null,description:"",name:"className",required:!1,type:{name:"string"}},message:{defaultValue:null,description:"",name:"message",required:!0,type:{name:"string"}}}}}catch{}export{r as F};
+//# sourceMappingURL=FormError-86485f5e.js.map
