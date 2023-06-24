@@ -1,18 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 
-import { InputText } from './InputText';
+import { TextInput } from './TextInput';
 
-const meta: Meta<typeof InputText> = {
-  component: InputText,
+const meta: Meta<typeof TextInput> = {
+  component: TextInput,
 };
 
 export default meta;
-type Story = StoryObj<typeof InputText>;
+type Story = StoryObj<typeof TextInput>;
 
-export const Email: Story = {
+export const Docs: Story = {
   render: () => (
-    <InputText
+    <TextInput
       type="email"
       id="my-email"
       name="email"
@@ -23,7 +23,7 @@ export const Email: Story = {
 
 export const Invalid: Story = {
   render: () => (
-    <InputText
+    <TextInput
       type="email"
       id="email-invalid"
       name="email"

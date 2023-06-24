@@ -2,7 +2,7 @@ import React from 'react';
 import { FormDescription } from '../FormDescription/FormDescription';
 import { FormError } from '../FormError/FormError';
 import { FormLabel } from '../FormLabel/FormLabel';
-import { InputText } from '../InputText/InputText';
+import { TextInput } from '../TextInput/TextInput';
 
 type TextFormProps = {
   className?: string;
@@ -48,7 +48,7 @@ export const TextForm = React.forwardRef<HTMLInputElement, TextFormProps>(
           <FormDescription className="pt-1.5" descriptions={descriptions} />
         </div>
         <div className="basis-2/3 mt-3 sm:mt-0">
-          <InputText
+          <TextInput
             className="w-full"
             ref={ref}
             type={type}

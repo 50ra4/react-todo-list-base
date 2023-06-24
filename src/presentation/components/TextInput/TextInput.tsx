@@ -1,6 +1,6 @@
 import React from 'react';
 
-type InputTextProps = {
+type TextInputProps = {
   className?: string;
   type?: 'email' | 'tel' | 'text' | 'url';
   id: string;
@@ -10,11 +10,8 @@ type InputTextProps = {
   isInvalid?: boolean;
 };
 
-/**
- * FIXME: TextInputに名前を変更する
- */
-export const InputText = React.forwardRef<HTMLInputElement, InputTextProps>(
-  function InputText(
+export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
+  function TextInput(
     { className, id, name, type = 'text', placeholder, isInvalid, value },
     ref,
   ) {
