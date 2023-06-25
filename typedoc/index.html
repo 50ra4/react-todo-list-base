@@ -1,0 +1,137 @@
+<!DOCTYPE html><html class="default" lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>react-todo-list-base API document</title><meta name="description" content="Documentation for react-todo-list-base API document"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script defer src="assets/main.js"></script><script async src="assets/search.js" id="tsd-search-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os"</script><header class="tsd-page-toolbar">
+<div class="tsd-toolbar-contents container">
+<div class="table-cell" id="tsd-search" data-base=".">
+<div class="field"><label for="tsd-search-field" class="tsd-widget tsd-toolbar-icon search no-caption"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M15.7824 13.833L12.6666 10.7177C12.5259 10.5771 12.3353 10.499 12.1353 10.499H11.6259C12.4884 9.39596 13.001 8.00859 13.001 6.49937C13.001 2.90909 10.0914 0 6.50048 0C2.90959 0 0 2.90909 0 6.49937C0 10.0896 2.90959 12.9987 6.50048 12.9987C8.00996 12.9987 9.39756 12.4863 10.5008 11.6239V12.1332C10.5008 12.3332 10.5789 12.5238 10.7195 12.6644L13.8354 15.7797C14.1292 16.0734 14.6042 16.0734 14.8948 15.7797L15.7793 14.8954C16.0731 14.6017 16.0731 14.1267 15.7824 13.833ZM6.50048 10.499C4.29094 10.499 2.50018 8.71165 2.50018 6.49937C2.50018 4.29021 4.28781 2.49976 6.50048 2.49976C8.71001 2.49976 10.5008 4.28708 10.5008 6.49937C10.5008 8.70852 8.71314 10.499 6.50048 10.499Z" fill="var(--color-text)"></path></svg></label><input type="text" id="tsd-search-field" aria-label="Search"/></div>
+<div class="field">
+<div id="tsd-toolbar-links"></div></div>
+<ul class="results">
+<li class="state loading">Preparing search index...</li>
+<li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">react-todo-list-base API document</a></div>
+<div class="table-cell" id="tsd-widgets"><a href="#" class="tsd-widget tsd-toolbar-icon menu no-caption" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="2" fill="var(--color-text)"></rect><rect x="1" y="7" width="14" height="2" fill="var(--color-text)"></rect><rect x="1" y="11" width="14" height="2" fill="var(--color-text)"></rect></svg></a></div></div></header>
+<div class="container container-main">
+<div class="col-content">
+<div class="tsd-page-title">
+<h2>react-todo-list-base API document</h2></div>
+<div class="tsd-panel tsd-typography"><a id="md:react-todo-list-base" class="tsd-anchor"></a><h1><a href="#md:react-todo-list-base">react-todo-list-base</a></h1><p><a href="https://github.com/50ra4/react-todo-list-base/actions/workflows/ci.yml"><img src="https://github.com/50ra4/react-todo-list-base/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI"></a>
+<a href="https://github.com/50ra4/react-todo-list-base/actions/workflows/deploy-gh-pages.yml"><img src="https://github.com/50ra4/react-todo-list-base/actions/workflows/deploy-gh-pages.yml/badge.svg" alt="Deploy to Github Pages"></a>
+<a href="https://github.com/50ra4/react-todo-list-base/actions/workflows/pages/pages-build-deployment"><img src="https://github.com/50ra4/react-todo-list-base/actions/workflows/pages/pages-build-deployment/badge.svg" alt="pages-build-deployment"></a></p>
+<ul>
+<li><a href="https://50ra4.github.io/react-todo-list-base/">Deployed Page</a></li>
+<li><a href="https://50ra4.github.io/react-todo-list-base/storybook/">Storybook</a></li>
+</ul>
+<p>このプロジェクトは Vite、TypeScript、React を用いた タスク管理の Web アプリケーション開発向けの Template です。</p>
+<p>その他、以下のような Package を利用しています。</p>
+<table>
+<thead>
+<tr>
+<th>for what</th>
+<th>package</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Styling</td>
+<td><a href="https://tailwindcss.com/">TailwindCSS</a></td>
+</tr>
+<tr>
+<td>Validation</td>
+<td><a href="https://zod.dev/">Zod</a></td>
+</tr>
+<tr>
+<td>Form</td>
+<td><a href="https://www.react-hook-form.com/">React Hook Form</a></td>
+</tr>
+<tr>
+<td>Date library</td>
+<td><a href="https://date-fns.org/">date-fns</a></td>
+</tr>
+</tbody></table>
+<a id="md:setup" class="tsd-anchor"></a><h2><a href="#md:setup">Setup</a></h2><p><code>git clone</code>後、プロジェクト直下で npm package の依存関係を install します。</p>
+<pre><code><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-0">i</span>
+</code><button>Copy</button></pre>
+<p>別途、node.js（18.15.0）が必要です。</p>
+<a id="md:build" class="tsd-anchor"></a><h2><a href="#md:build">Build</a></h2><p>Vite を利用して、ソースコードを build します。
+実行するとプロジェクト直下の dist のディレクトリに展開します。</p>
+<pre><code><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-0">run</span><span class="hl-1"> </span><span class="hl-0">build</span>
+</code><button>Copy</button></pre>
+<a id="md:testing" class="tsd-anchor"></a><h2><a href="#md:testing">Testing</a></h2><p>Jest や <code>@testing-library/react</code> を用いて、テストを実行します。</p>
+<pre><code><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-0">run</span><span class="hl-1"> </span><span class="hl-0">test</span>
+</code><button>Copy</button></pre>
+<p>開発中にテストを実行する場合、Jest の watch オプションを追加することでソースファイルが変更される度にテストを実行します。</p>
+<pre><code><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-0">run</span><span class="hl-1"> </span><span class="hl-0">test</span><span class="hl-1"> -- --</span><span class="hl-0">watch</span>
+</code><button>Copy</button></pre>
+<a id="md:dev-server" class="tsd-anchor"></a><h2><a href="#md:dev-server">Dev Server</a></h2><p>Vite の plugin を利用して、HMR で開発できます。</p>
+<pre><code><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-0">run</span><span class="hl-1"> </span><span class="hl-0">dev</span>
+</code><button>Copy</button></pre>
+<a id="md:linting" class="tsd-anchor"></a><h2><a href="#md:linting">Linting</a></h2><p>ESLint を利用し、Lint を実行しています。</p>
+<pre><code><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-0">run</span><span class="hl-1"> </span><span class="hl-2">lint</span><span class="hl-1">:</span><span class="hl-0">eslint</span>
+</code><button>Copy</button></pre>
+<p>VSCode の拡張機能と併用することで、ファイル保存時に実行します。
+また、husky と併せて利用しており、commit 時にチェックを実行しているため、エラー状態での commit を抑止します。</p>
+<a id="md:formatting" class="tsd-anchor"></a><h2><a href="#md:formatting">Formatting</a></h2><p>prettier を利用し、コードの整形を行なっています。</p>
+<pre><code><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-0">run</span><span class="hl-1"> </span><span class="hl-2">lint</span><span class="hl-1">:</span><span class="hl-0">prettier</span>
+</code><button>Copy</button></pre>
+<p>VSCode の拡張機能と併用することで、ファイル保存時に実行します。
+また、husky と併せて利用しており、commit 時にチェックを実行し、自動で整形します。</p>
+<a id="md:storybook" class="tsd-anchor"></a><h2><a href="#md:storybook">Storybook</a></h2><p>作成したコンポーネントの storybook を作成することで、作成したコンポーネントを確認できます</p>
+<pre><code><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-0">run</span><span class="hl-1"> </span><span class="hl-0">storybook</span>
+</code><button>Copy</button></pre>
+<p>静的ビルドすることも可能です。</p>
+<pre><code><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-0">run</span><span class="hl-1"> </span><span class="hl-0">build</span><span class="hl-1">-</span><span class="hl-0">storybook</span>
+</code><button>Copy</button></pre>
+<a id="md:ci" class="tsd-anchor"></a><h2><a href="#md:ci">CI</a></h2><p>github actions を用いて CI を実行しています。
+CI では、型定義、ビルド、testing を実行し、失敗しないことを確認できます。
+ブランチを remote に push したタイミングで実行されます</p>
+<a id="md:cd" class="tsd-anchor"></a><h2><a href="#md:cd">CD</a></h2><p>github actions を用いて、作成した Web アプリケーションと storybook を Github Pages に公開します。
+（github pages に公開するには、別途 github 上での設定が必要です）</p>
+<pre><code><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-0">run</span><span class="hl-1"> </span><span class="hl-0">generate</span><span class="hl-1">-</span><span class="hl-0">gh</span><span class="hl-1">-</span><span class="hl-0">pages</span>
+</code><button>Copy</button></pre>
+</div></div>
+<div class="col-sidebar">
+<div class="page-menu">
+<div class="tsd-navigation settings">
+<details class="tsd-index-accordion"><summary class="tsd-accordion-summary">
+<h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)" id="icon-chevronDown"></path></svg>Settings</h3></summary>
+<div class="tsd-accordion-details">
+<div class="tsd-filter-visibility">
+<h4 class="uppercase">Member Visibility</h4><form>
+<ul id="tsd-filter-options">
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-private" name="private"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Private</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></form></div>
+<div class="tsd-theme-toggle">
+<h4 class="uppercase">Theme</h4><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div>
+<details open class="tsd-index-accordion tsd-page-navigation"><summary class="tsd-accordion-summary">
+<h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="#icon-chevronDown"></use></svg>On This Page</h3></summary>
+<div class="tsd-accordion-details">
+<ul>
+<li>
+<ul>
+<li><a href="#md:react-todo-list-base"><span>react-<wbr/>todo-<wbr/>list-<wbr/>base</span></a></li>
+<li>
+<ul>
+<li><a href="#md:setup"><span>Setup</span></a></li>
+<li><a href="#md:build"><span>Build</span></a></li>
+<li><a href="#md:testing"><span>Testing</span></a></li>
+<li><a href="#md:dev-server"><span>Dev <wbr/>Server</span></a></li>
+<li><a href="#md:linting"><span>Linting</span></a></li>
+<li><a href="#md:formatting"><span>Formatting</span></a></li>
+<li><a href="#md:storybook"><span>Storybook</span></a></li>
+<li><a href="#md:ci"><span>CI</span></a></li>
+<li><a href="#md:cd"><span>CD</span></a></li></ul></li></ul></li></ul></div></details></div>
+<div class="site-menu">
+<nav class="tsd-navigation"><a href="index.html" class="current"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-4"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-namespace)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M9.33 16V7.24H10.77L13.446 14.74C13.43 14.54 13.41 14.296 13.386 14.008C13.37 13.712 13.354 13.404 13.338 13.084C13.33 12.756 13.326 12.448 13.326 12.16V7.24H14.37V16H12.93L10.266 8.5C10.282 8.692 10.298 8.936 10.314 9.232C10.33 9.52 10.342 9.828 10.35 10.156C10.366 10.476 10.374 10.784 10.374 11.08V16H9.33Z" fill="var(--color-text)"></path></g></svg><span>react-<wbr/>todo-<wbr/>list-<wbr/>base API document</span></a>
+<ul class="tsd-small-nested-navigation">
+<li><a href="modules/hooks_useIncrement.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>hooks/use<wbr/>Increment</span></a></li>
+<li><a href="modules/schema_assignee.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>schema/assignee</span></a></li>
+<li><a href="modules/schema_category.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>schema/category</span></a></li>
+<li><a href="modules/schema_common.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>schema/common</span></a></li>
+<li><a href="modules/schema_task.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>schema/task</span></a></li>
+<li><a href="modules/schema_user.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>schema/user</span></a></li>
+<li><a href="modules/utils_calc.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>utils/calc</span></a></li>
+<li><a href="modules/utils_className.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>utils/class<wbr/>Name</span></a></li>
+<li><a href="modules/utils_date.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>utils/date</span></a></li>
+<li><a href="modules/utils_testUtils.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>utils/test<wbr/>Utils</span></a></li></ul></nav></div></div></div>
+<div class="tsd-generator">
+<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div>
+<div class="overlay"></div></body></html>
