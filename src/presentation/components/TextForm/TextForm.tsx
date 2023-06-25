@@ -41,7 +41,7 @@ export const TextForm = React.forwardRef<HTMLInputElement, TextFormProps>(
       sm:flex flex-row justify-between justify-items-center
       ${className}`}
       >
-        <div className="basis-1/3">
+        <div className="basis-1/3 flex justify-start justify-items-center">
           <FormLabel
             htmlFor={id}
             formType={required ? 'required' : 'none'}
