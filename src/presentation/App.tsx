@@ -4,7 +4,7 @@ import { ROUTES, ErrorPage } from './routes';
 
 export function App() {
   return (
-    <div>
+    <div className="bg-gray-50 min-h-screen">
       <BrowserRouter basename={import.meta.env.BASE_URL}>
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
