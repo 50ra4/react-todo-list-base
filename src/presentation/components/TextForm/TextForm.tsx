@@ -15,6 +15,8 @@ type TextFormProps = {
   required?: boolean;
   value?: string;
   placeholder?: string;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  onBlur?: React.ChangeEventHandler<HTMLInputElement>;
 };
 
 export const TextForm = React.forwardRef<HTMLInputElement, TextFormProps>(
@@ -30,6 +32,8 @@ export const TextForm = React.forwardRef<HTMLInputElement, TextFormProps>(
       placeholder,
       errorMessage,
       descriptions = [],
+      onChange,
+      onBlur,
     },
     ref,
   ) {
@@ -66,6 +70,8 @@ export const TextForm = React.forwardRef<HTMLInputElement, TextFormProps>(
             placeholder={placeholder}
             isInvalid={!!errorMessage}
             describedId={descriptionId}
+            onChange={onChange}
+            onBlur={onBlur}
           />
           {!!errorMessage && <FormError message={errorMessage} />}
         </div>
