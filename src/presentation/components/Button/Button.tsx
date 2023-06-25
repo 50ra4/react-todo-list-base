@@ -9,18 +9,16 @@ type ButtonProps = {
   children: React.ReactNode;
 };
 
-export const Button = React.forwardRef(function Button({
-  className,
-  type = 'button',
-  color,
-  disabled,
-  onClick,
-  children,
-}: ButtonProps) {
-  return (
-    <button
-      type={type}
-      className={`
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  function Button(
+    { className, type = 'button', color, disabled, onClick, children },
+    ref,
+  ) {
+    return (
+      <button
+        ref={ref}
+        type={type}
+        className={`
       text-base
       rounded-3xl
       px-4 py-2.5
@@ -31,10 +29,11 @@ export const Button = React.forwardRef(function Button({
       }
       ${disabled ? 'bg-opacity-50' : ''}
       ${className}`}
-      disabled={disabled}
-      onClick={onClick}
-    >
-      {children}
-    </button>
-  );
-});
+        disabled={disabled}
+        onClick={onClick}
+      >
+        {children}
+      </button>
+    );
+  },
+);
