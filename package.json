@@ -70,7 +70,7 @@
   },
   "author": "50ra4",
   "license": "MIT",
-  "description": "React + TypeScript development template using Vite",
+  "description": "Todo list application",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/50ra4/react-todo-list-base.git"
