@@ -1,27 +1,13 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { z } from 'zod';
 import { Button } from '@/components/Button/Button';
 import { TextForm } from '@/components/TextForm/TextForm';
-
-const KATAKANA = /[\u{30a1}-\u{30f6}]+/u;
-const PHONE_NUMBER = /^[0-9]{10,11}$/;
-const ContactSchema = z.object({
-  name: z.string().max(20),
-  kana: z.string().max(50).regex(KATAKANA, '全角カタカナで入力してください'),
-  mail: z.string().email('メール形式で入力してください'),
-  tel: z
-    .string()
-    .regex(PHONE_NUMBER, '半角数字で10、11桁以内で入力してください'),
-});
-type Contact = z.infer<typeof ContactSchema>;
-const ContactDefaultValue: Contact = {
-  name: '',
-  kana: '',
-  mail: '',
-  tel: '',
-};
+import {
+  contactSchema,
+  Contact,
+  CONTACT_DEFAULT_VALUE,
+} from 'src/schema/contact';
 
 function ContactForm() {
   const {
@@ -29,8 +15,8 @@ function ContactForm() {
     handleSubmit,
     formState: { errors },
   } = useForm<Contact>({
-    resolver: zodResolver(ContactSchema),
-    defaultValues: ContactDefaultValue,
+    resolver: zodResolver(contactSchema),
+    defaultValues: CONTACT_DEFAULT_VALUE,
   });
 
   return (
