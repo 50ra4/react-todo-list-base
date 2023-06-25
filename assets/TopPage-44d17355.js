@@ -1,0 +1,1 @@
+import{j as e,L as n}from"./index-d2d980dc.js";function i(){return e.jsxs("main",{children:[e.jsx("h2",{children:"TopPage"}),e.jsx("div",{children:"TopPage component"}),e.jsx("ul",{children:e.jsx("li",{children:e.jsx(n,{to:"/tasks/new",children:"add new task"})})})]})}export{i as default};
