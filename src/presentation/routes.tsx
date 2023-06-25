@@ -6,8 +6,8 @@ export const ErrorPage = lazy(
   () => import('src/presentation/pages/ErrorPage/ErrorPage'),
 );
 
-const TaskInputPage = lazy(
-  () => import('src/presentation/pages/TaskInputPage/TaskInputPage'),
+const ContactPage = lazy(
+  () => import('src/presentation/pages/ContactPage/ContactPage'),
 );
 
 export const ROUTES: RouteProps[] = [
@@ -20,7 +20,7 @@ export const ROUTES: RouteProps[] = [
     element: <ErrorPage />,
   },
   {
-    path: '/tasks/new',
-    element: <TaskInputPage />,
+    path: '/contact',
+    element: <ContactPage />,
   },
 ];
