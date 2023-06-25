@@ -1,6 +1,18 @@
 import React from 'react';
+import { z } from 'zod';
 import { Button } from '@/components/Button/Button';
 import { TextForm } from '@/components/TextForm/TextForm';
+
+const KATAKANA = new RegExp('/^[ァ-ヶー　]*$/');
+const PHONE_NUMBER = new RegExp('^[0-9]{10,11}$');
+const ContactSchema = z.object({
+  name: z.string().max(20),
+  kana: z.string().max(50).regex(KATAKANA, '全角カタカナで入力してください'),
+  mail: z.string().email(),
+  tel: z
+    .string()
+    .regex(PHONE_NUMBER, '半角数字で10、11桁以内で入力してください'),
+});
 
 const preventDefault = (e: React.FormEvent<HTMLElement>) => {
   e.preventDefault();
