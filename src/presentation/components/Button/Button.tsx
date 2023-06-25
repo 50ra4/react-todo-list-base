@@ -2,6 +2,7 @@ import React from 'react';
 
 type ButtonProps = {
   className?: string;
+  type?: 'button' | 'submit' | 'reset';
   color: 'primary' | 'secondary';
   disabled?: boolean;
   onClick?: () => void;
@@ -10,6 +11,7 @@ type ButtonProps = {
 
 export const Button = React.forwardRef(function Button({
   className,
+  type = 'button',
   color,
   disabled,
   onClick,
@@ -17,6 +19,7 @@ export const Button = React.forwardRef(function Button({
 }: ButtonProps) {
   return (
     <button
+      type={type}
       className={`
       text-base
       rounded-3xl
