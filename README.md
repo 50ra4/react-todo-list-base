@@ -1,7 +1,22 @@
 # react-todo-list-base
 
-このプロジェクトは Vite、TypeScript、React を用いた Web アプリケーション開発向けの Template です。
-一部、サンプルとなるソースコードを含んでいます。
+[![CI](https://github.com/50ra4/react-todo-list-base/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/50ra4/react-todo-list-base/actions/workflows/ci.yml)
+[![Deploy to Github Pages](https://github.com/50ra4/react-todo-list-base/actions/workflows/deploy-gh-pages.yml/badge.svg)](https://github.com/50ra4/react-todo-list-base/actions/workflows/deploy-gh-pages.yml)
+[![pages-build-deployment](https://github.com/50ra4/react-todo-list-base/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/50ra4/react-todo-list-base/actions/workflows/pages/pages-build-deployment)
+
+- [Deployed Page](https://50ra4.github.io/react-todo-list-base/)
+- [Storybook](https://50ra4.github.io/react-todo-list-base/storybook/)
+
+このプロジェクトは Vite、TypeScript、React を用いた タスク管理の Web アプリケーション開発向けの Template です。
+
+その他、以下のような Package を利用しています。
+
+| for what     | package                                             |
+| ------------ | --------------------------------------------------- |
+| Styling      | [TailwindCSS](https://tailwindcss.com/)             |
+| Validation   | [Zod](https://zod.dev/)                             |
+| Form         | [React Hook Form](https://www.react-hook-form.com/) |
+| Date library | [date-fns](https://date-fns.org/)                   |
 
 ## Setup
 
