@@ -9,6 +9,10 @@ const Page1 = lazy(() => import('src/presentation/pages/Page1/Page1'));
 const Page2 = lazy(() => import('src/presentation/pages/Page2/Page2'));
 const Page3 = lazy(() => import('src/presentation/pages/Page3/Page3'));
 
+const TaskInputPage = lazy(
+  () => import('src/presentation/pages/TaskInputPage/TaskInputPage'),
+);
+
 export const ROUTES: RouteProps[] = [
   {
     path: '/',
@@ -17,6 +21,10 @@ export const ROUTES: RouteProps[] = [
   {
     path: '/error',
     element: <ErrorPage />,
+  },
+  {
+    path: '/tasks/new',
+    element: <TaskInputPage />,
   },
   {
     path: '/1',
