@@ -8,13 +8,7 @@ function TopPage() {
       <div>TopPage component</div>
       <ul>
         <li>
-          <Link to="/1">Page1</Link>
-        </li>
-        <li>
-          <Link to="/2">Page2</Link>
-        </li>
-        <li>
-          <Link to="/3">Page3</Link>
+          <Link to="/tasks/new">add new task</Link>
         </li>
       </ul>
     </main>
