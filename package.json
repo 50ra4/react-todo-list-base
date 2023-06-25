@@ -22,9 +22,11 @@
     "generate-gh-pages": "BASE_PATH=/react-todo-list-base/ npm run build && rm -rf docs && cp -r dist docs && npm run build-storybook && npm run build-typedoc && cp gh-pages/404.html docs"
   },
   "dependencies": {
+    "@hookform/resolvers": "3.1.1",
     "date-fns": "2.30.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hook-form": "7.45.0",
     "react-router-dom": "6.12.1",
     "zod": "3.21.4"
   },

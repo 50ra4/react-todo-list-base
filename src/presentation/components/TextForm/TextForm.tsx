@@ -15,6 +15,8 @@ type TextFormProps = {
   required?: boolean;
   value?: string;
   placeholder?: string;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  onBlur?: React.ChangeEventHandler<HTMLInputElement>;
 };
 
 export const TextForm = React.forwardRef<HTMLInputElement, TextFormProps>(
@@ -30,6 +32,8 @@ export const TextForm = React.forwardRef<HTMLInputElement, TextFormProps>(
       placeholder,
       errorMessage,
       descriptions = [],
+      onChange,
+      onBlur,
     },
     ref,
   ) {
@@ -41,17 +45,19 @@ export const TextForm = React.forwardRef<HTMLInputElement, TextFormProps>(
       sm:flex flex-row justify-between justify-items-center
       ${className}`}
       >
-        <div className="basis-1/3">
+        <div className="basis-1/3 flex justify-start justify-items-center">
           <FormLabel
             htmlFor={id}
             formType={required ? 'required' : 'none'}
             label={label}
           />
-          <FormDescription
-            className="pt-1.5"
-            id={descriptionId}
-            descriptions={descriptions}
-          />
+          {descriptions.length > 0 && (
+            <FormDescription
+              className="pt-1.5"
+              id={descriptionId}
+              descriptions={descriptions}
+            />
+          )}
         </div>
         <div className="basis-2/3 mt-3 sm:mt-0">
           <TextInput
@@ -64,6 +70,8 @@ export const TextForm = React.forwardRef<HTMLInputElement, TextFormProps>(
             placeholder={placeholder}
             isInvalid={!!errorMessage}
             describedId={descriptionId}
+            onChange={onChange}
+            onBlur={onBlur}
           />
           {!!errorMessage && <FormError message={errorMessage} />}
         </div>

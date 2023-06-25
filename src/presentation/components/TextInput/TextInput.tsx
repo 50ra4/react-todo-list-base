@@ -9,6 +9,8 @@ type TextInputProps = {
   placeholder?: string;
   isInvalid?: boolean;
   describedId?: string;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  onBlur?: React.ChangeEventHandler<HTMLInputElement>;
 };
 
 export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
@@ -22,6 +24,8 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
       isInvalid,
       value,
       describedId,
+      onChange,
+      onBlur,
     },
     ref,
   ) {
@@ -42,6 +46,8 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
         placeholder={placeholder}
         value={value}
         aria-describedby={describedId}
+        onChange={onChange}
+        onBlur={onBlur}
       />
     );
   },
