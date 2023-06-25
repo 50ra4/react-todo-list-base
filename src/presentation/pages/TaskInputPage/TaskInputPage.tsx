@@ -5,8 +5,8 @@ import { z } from 'zod';
 import { Button } from '@/components/Button/Button';
 import { TextForm } from '@/components/TextForm/TextForm';
 
-const KATAKANA = new RegExp('/^[ァ-ヶー　]*$/');
-const PHONE_NUMBER = new RegExp('^[0-9]{10,11}$');
+const KATAKANA = /[\u{30a1}-\u{30f6}]+/u;
+const PHONE_NUMBER = /^[0-9]{10,11}$/;
 const ContactSchema = z.object({
   name: z.string().max(20),
   kana: z.string().max(50).regex(KATAKANA, '全角カタカナで入力してください'),
@@ -27,8 +27,7 @@ function ContactForm() {
   const {
     register,
     handleSubmit,
-    formState: { errors, ...other },
-    watch,
+    formState: { errors },
   } = useForm<Contact>({
     resolver: zodResolver(ContactSchema),
     defaultValues: ContactDefaultValue,
@@ -45,48 +44,31 @@ function ContactForm() {
         onSubmit={handleSubmit((d) => console.log(d))}
       >
         <TextForm
-          ref={register('name').ref}
-          name={register('name').name}
+          {...register('name')}
           errorMessage={errors.name?.message}
           id="name"
           label="名前"
         />
         <TextForm
-          ref={register('kana').ref}
-          name={register('kana').name}
-          id="katakana-name"
+          {...register('kana')}
+          id="kana"
           label="名前(カナ)"
           errorMessage={errors.kana?.message}
         />
         <TextForm
-          ref={register('mail').ref}
-          name={register('mail').name}
+          {...register('mail')}
           id="mail"
           type="email"
           label="メールアドレス"
           errorMessage={errors.mail?.message}
         />
         <TextForm
-          ref={register('tel').ref}
-          name={register('tel').name}
+          {...register('tel')}
           id="tel"
           type="tel"
           label="電話番号"
           errorMessage={errors.tel?.message}
         />
-        <div className="flex justify-center mt-4">
-          <Button
-            color="primary"
-            onClick={() => {
-              console.log(register('kana'));
-              console.log(other);
-              console.log(errors);
-              console.log(watch());
-            }}
-          >
-            確認する
-          </Button>
-        </div>
         <div className="flex justify-center mt-4">
           <Button type="submit" color="secondary">
             送信する
