@@ -18,6 +18,7 @@
 <ul>
 <li><a href="https://50ra4.github.io/react-todo-list-base/">Deployed Page</a></li>
 <li><a href="https://50ra4.github.io/react-todo-list-base/storybook/">Storybook</a></li>
+<li><a href="https://50ra4.github.io/react-todo-list-base/typedoc/">TypeDoc</a></li>
 </ul>
 <p>このプロジェクトは Vite、TypeScript、React を用いた タスク管理の Web アプリケーション開発向けの Template です。</p>
 <p>その他、以下のような Package を利用しています。</p>
@@ -78,10 +79,13 @@
 <p>静的ビルドすることも可能です。</p>
 <pre><code><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-0">run</span><span class="hl-1"> </span><span class="hl-0">build</span><span class="hl-1">-</span><span class="hl-0">storybook</span>
 </code><button>Copy</button></pre>
+<a id="md:typedoc" class="tsd-anchor"></a><h2><a href="#md:typedoc">TypeDoc</a></h2><p>作成した関数などの仕様を TypeDoc を使ってドキュメント化することができます。</p>
+<pre><code><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-0">run</span><span class="hl-1"> </span><span class="hl-0">build</span><span class="hl-1">-</span><span class="hl-0">typedoc</span>
+</code><button>Copy</button></pre>
 <a id="md:ci" class="tsd-anchor"></a><h2><a href="#md:ci">CI</a></h2><p>github actions を用いて CI を実行しています。
 CI では、型定義、ビルド、testing を実行し、失敗しないことを確認できます。
 ブランチを remote に push したタイミングで実行されます</p>
-<a id="md:cd" class="tsd-anchor"></a><h2><a href="#md:cd">CD</a></h2><p>github actions を用いて、作成した Web アプリケーションと storybook を Github Pages に公開します。
+<a id="md:cd" class="tsd-anchor"></a><h2><a href="#md:cd">CD</a></h2><p>github actions を用いて、作成した Web アプリケーションと storybook と TypeDoc を Github Pages に公開します。
 （github pages に公開するには、別途 github 上での設定が必要です）</p>
 <pre><code><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-0">run</span><span class="hl-1"> </span><span class="hl-0">generate</span><span class="hl-1">-</span><span class="hl-0">gh</span><span class="hl-1">-</span><span class="hl-0">pages</span>
 </code><button>Copy</button></pre>
@@ -117,6 +121,7 @@ CI では、型定義、ビルド、testing を実行し、失敗しないこと
 <li><a href="#md:linting"><span>Linting</span></a></li>
 <li><a href="#md:formatting"><span>Formatting</span></a></li>
 <li><a href="#md:storybook"><span>Storybook</span></a></li>
+<li><a href="#md:typedoc"><span>Type<wbr/>Doc</span></a></li>
 <li><a href="#md:ci"><span>CI</span></a></li>
 <li><a href="#md:cd"><span>CD</span></a></li></ul></li></ul></li></ul></div></details></div>
 <div class="site-menu">
