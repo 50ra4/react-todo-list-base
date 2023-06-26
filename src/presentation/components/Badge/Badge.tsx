@@ -3,20 +3,21 @@ import { joinClassNames } from 'src/utils/className';
 
 type Props = {
   className?: string;
+  /** Badgeに表示する文字列 */
   label: string;
-  required?: boolean;
+  color: 'empathized' | 'grayish';
 };
 
 export const Badge = React.memo(function Badge({
   className,
   label,
-  required,
+  color,
 }: Props) {
   return (
     <span
       className={joinClassNames(
         'px-1.5 py-1 text-white text-xs',
-        required ? 'bg-red-600' : 'bg-gray-500',
+        color === 'empathized' ? 'bg-red-600' : 'bg-gray-500',
         className,
       )}
     >
