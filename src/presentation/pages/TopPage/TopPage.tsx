@@ -8,7 +8,7 @@ function TopPage() {
       <div>TopPage component</div>
       <ul>
         <li>
-          <Link to="/tasks/new">add new task</Link>
+          <Link to="/contact">Go to Contact Page!</Link>
         </li>
       </ul>
     </main>
