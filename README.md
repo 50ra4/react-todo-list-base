@@ -6,6 +6,7 @@
 
 - [Deployed Page](https://50ra4.github.io/react-todo-list-base/)
 - [Storybook](https://50ra4.github.io/react-todo-list-base/storybook/)
+- [TypeDoc](https://50ra4.github.io/react-todo-list-base/typedoc/)
 
 このプロジェクトは Vite、TypeScript、React を用いた タスク管理の Web アプリケーション開発向けの Template です。
 
@@ -95,6 +96,14 @@ npm run storybook
 npm run build-storybook
 ```
 
+## TypeDoc
+
+作成した関数などの仕様を TypeDoc を使ってドキュメント化することができます。
+
+```
+npm run build-typedoc
+```
+
 ## CI
 
 github actions を用いて CI を実行しています。
@@ -103,7 +112,7 @@ CI では、型定義、ビルド、testing を実行し、失敗しないこと
 
 ## CD
 
-github actions を用いて、作成した Web アプリケーションと storybook を Github Pages に公開します。
+github actions を用いて、作成した Web アプリケーションと storybook と TypeDoc を Github Pages に公開します。
 （github pages に公開するには、別途 github 上での設定が必要です）
 
 ```
