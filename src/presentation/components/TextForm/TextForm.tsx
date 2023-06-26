@@ -41,21 +41,21 @@ export const TextForm = React.forwardRef<HTMLInputElement, TextFormProps>(
 
     return (
       <div
-        className={`
-      sm:flex flex-row justify-between justify-items-center
-      ${className}`}
+        className={`sm:flex flex-row justify-between justify-items-center ${
+          className ?? ''
+        }`}
       >
-        <div className="basis-1/3 flex justify-start justify-items-center">
+        <div className="basis-1/3 md:pt-2.5">
           <FormLabel htmlFor={id} required={required} label={label} />
           {descriptions.length > 0 && (
             <FormDescription
-              className="pt-1.5"
+              className="pt-1.5 md:px-1.5"
               id={descriptionId}
               descriptions={descriptions}
             />
           )}
         </div>
-        <div className="basis-2/3 mt-3 sm:mt-0">
+        <div className="basis-2/3 mt-1.5 md:mt-0">
           <TextInput
             className="w-full"
             ref={ref}
@@ -69,7 +69,9 @@ export const TextForm = React.forwardRef<HTMLInputElement, TextFormProps>(
             onChange={onChange}
             onBlur={onBlur}
           />
-          {!!errorMessage && <FormError message={errorMessage} />}
+          {!!errorMessage && (
+            <FormError className="mt-1.5" message={errorMessage} />
+          )}
         </div>
       </div>
     );
