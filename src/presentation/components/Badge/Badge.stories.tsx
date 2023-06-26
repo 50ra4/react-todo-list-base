@@ -5,6 +5,17 @@ import { Badge } from './Badge';
 
 const meta: Meta<typeof Badge> = {
   component: Badge,
+  args: {
+    label: '必須',
+    color: 'empathized',
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: 'Badgeコンポーネント。主にFormのラベル横に表示する。',
+      },
+    },
+  },
 };
 
 export default meta;
