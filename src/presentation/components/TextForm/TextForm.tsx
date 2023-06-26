@@ -46,11 +46,7 @@ export const TextForm = React.forwardRef<HTMLInputElement, TextFormProps>(
       ${className}`}
       >
         <div className="basis-1/3 flex justify-start justify-items-center">
-          <FormLabel
-            htmlFor={id}
-            formType={required ? 'required' : 'none'}
-            label={label}
-          />
+          <FormLabel htmlFor={id} required={required} label={label} />
           {descriptions.length > 0 && (
             <FormDescription
               className="pt-1.5"

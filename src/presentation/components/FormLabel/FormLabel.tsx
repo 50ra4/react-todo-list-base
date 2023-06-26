@@ -5,14 +5,14 @@ type FormLabelProps = {
   className?: string;
   htmlFor: string;
   label: string;
-  formType: 'required' | 'optional' | 'none';
+  required?: boolean;
 };
 
 export function FormLabel({
   className,
   htmlFor,
   label,
-  formType,
+  required,
 }: FormLabelProps) {
   return (
     <label
@@ -21,16 +21,10 @@ export function FormLabel({
       text-base text-gray-900 font-bold
       text-center
       flex items-center
-    ${className}
+    ${className ?? ''}
     `}
     >
-      {formType !== 'none' && (
-        <Badge
-          className="mr-1"
-          required={formType === 'required'}
-          label={formType === 'required' ? '必須' : '任意'}
-        />
-      )}
+      {!!required && <Badge className="mr-1" color="empathized" label="必須" />}
       {label}
     </label>
   );
