@@ -19,9 +19,16 @@ export default meta;
 type Story = StoryObj<typeof Component>;
 
 export const Docs: Story = {
-  render: () => <Component items={items} />,
+  render: () => <Component id="pulldown-docs" name="fruit" items={items} />,
 };
 
 export const Invalid: Story = {
-  render: () => <Component items={items} isInvalid={true} />,
+  render: () => (
+    <Component
+      id="pulldown-invalid"
+      name="fruit"
+      items={items}
+      isInvalid={true}
+    />
+  ),
 };
