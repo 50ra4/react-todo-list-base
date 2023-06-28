@@ -21,3 +21,7 @@ type Story = StoryObj<typeof Component>;
 export const Docs: Story = {
   render: () => <Component items={items} />,
 };
+
+export const Invalid: Story = {
+  render: () => <Component items={items} isInvalid={true} />,
+};

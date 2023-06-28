@@ -8,18 +8,20 @@ type Props = {
     text: string;
   }[];
   selectedId?: string;
+  isInvalid?: boolean;
 };
 
 export const Pulldown = React.forwardRef<HTMLSelectElement, Props>(
-  function Pulldown({ className, items, selectedId }, ref) {
+  function Pulldown({ className, items, selectedId, isInvalid }, ref) {
     return (
       <div className={`relative w-100 flex ${className || ''}`}>
         <select
-          className="
+          className={`
           border border-gray-300 border-solid rounded-sm
           flex-grow flex-shrink
           h-11 pl-1 pr-4
-          appearance-none"
+          ${isInvalid ? 'border-red-600 bg-red-200' : ''}
+          appearance-none`}
           ref={ref}
           value={selectedId}
         >
