@@ -16,7 +16,7 @@ export const TASK_VALIDATION_MESSAGES = {
   STATUS_OVER_MAX_LENGTH: 'タスクの状態は20文字以内で入力してください',
 } as const;
 
-export const taskBaseSchema = z.object({
+const taskBaseSchema = z.object({
   title: z
     .string({ required_error: TASK_VALIDATION_MESSAGES.TITLE_REQUIRED })
     .max(50, TASK_VALIDATION_MESSAGES.TITLE_OVER_MAX_LENGTH),
@@ -42,17 +42,28 @@ const isStartDateAfterEndDate = (start: string, end: string) => {
   return isAfter(startDate, endDate);
 };
 
+const createRefinementIssues = <T extends z.infer<typeof taskBaseSchema>>(
+  { startDate, endDate }: T,
+  ctx: z.RefinementCtx,
+): void => {
+  if (!!startDate && isStartDateAfterEndDate(startDate, endDate)) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      message: TASK_VALIDATION_MESSAGES.START_DATE_AFTER_END_DATE,
+      path: ['startDate'],
+    });
+  }
+};
+
+export const taskInputSchema = taskBaseSchema.superRefine(
+  createRefinementIssues,
+);
+
+export type TaskInput = z.infer<typeof taskInputSchema>;
+
 export const taskSchema = baseSchema
   .merge(taskBaseSchema)
-  .superRefine(({ startDate, endDate }, ctx) => {
-    if (!!startDate && isStartDateAfterEndDate(startDate, endDate)) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: TASK_VALIDATION_MESSAGES.START_DATE_AFTER_END_DATE,
-        path: ['startDate'],
-      });
-    }
-  });
+  .superRefine(createRefinementIssues);
 
 export type Task = z.infer<typeof taskSchema>;
 
