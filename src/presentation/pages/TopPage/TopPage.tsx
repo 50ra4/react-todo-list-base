@@ -10,6 +10,9 @@ function TopPage() {
         <li>
           <Link to="/contact">Go to Contact Page!</Link>
         </li>
+        <li>
+          <Link to="/tasks/new">Go to TaskInput Page!</Link>
+        </li>
       </ul>
     </main>
   );
