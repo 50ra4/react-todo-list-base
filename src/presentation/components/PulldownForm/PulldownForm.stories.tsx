@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 
 import { PulldownForm as Component } from './PulldownForm';
-import { CATEGORY_ITEMS } from 'src/const/categories';
+import { CATEGORY_ITEMS } from 'src/const/category';
 
 type Props = React.ComponentProps<typeof Component>;
 
