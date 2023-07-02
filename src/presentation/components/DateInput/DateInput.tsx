@@ -24,7 +24,6 @@ export const DateInput = React.forwardRef<HTMLInputElement, Props>(
       name,
       min,
       max,
-      placeholder,
       isInvalid,
       value,
       describedId,
@@ -50,7 +49,6 @@ export const DateInput = React.forwardRef<HTMLInputElement, Props>(
         name={name}
         min={min}
         max={max}
-        placeholder={placeholder}
         value={value}
         aria-describedby={describedId}
         onChange={onChange}
