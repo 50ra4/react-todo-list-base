@@ -12,11 +12,23 @@ type Props = {
   selectedId?: string;
   isInvalid?: boolean;
   describedId?: string;
+  onChange?: React.ChangeEventHandler<HTMLSelectElement>;
+  onBlur?: React.ChangeEventHandler<HTMLSelectElement>;
 };
 
 export const Pulldown = React.forwardRef<HTMLSelectElement, Props>(
   function Pulldown(
-    { className, id, name, items, selectedId, isInvalid, describedId },
+    {
+      className,
+      id,
+      name,
+      items,
+      selectedId,
+      isInvalid,
+      describedId,
+      onChange,
+      onBlur,
+    },
     ref,
   ) {
     return (
@@ -33,6 +45,8 @@ export const Pulldown = React.forwardRef<HTMLSelectElement, Props>(
           appearance-none`}
           value={selectedId}
           aria-describedby={describedId}
+          onChange={onChange}
+          onBlur={onBlur}
         >
           {items.map(({ id, text }) => (
             <option key={id} value={id}>
