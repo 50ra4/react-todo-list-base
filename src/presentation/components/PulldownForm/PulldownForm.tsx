@@ -45,17 +45,17 @@ export const PulldownForm = React.forwardRef<HTMLSelectElement, Props>(
           className ?? ''
         }`}
       >
-        <div className="basis-1/3 md:pt-2.5">
+        <div className="basis-1/3 sm:pt-2.5">
           <FormLabel htmlFor={id} required={required} label={label} />
           {descriptions.length > 0 && (
             <FormDescription
-              className="pt-1.5 md:px-1.5"
+              className="pt-1.5 sm:px-1.5"
               id={descriptionId}
               descriptions={descriptions}
             />
           )}
         </div>
-        <div className="basis-2/3 mt-1.5 md:mt-0">
+        <div className="basis-2/3 mt-1.5 sm:mt-0">
           <Pulldown
             ref={ref}
             id={id}
