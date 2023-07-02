@@ -61,6 +61,16 @@ export const taskInputSchema = taskBaseSchema.superRefine(
 
 export type TaskInput = z.infer<typeof taskInputSchema>;
 
+export const TASK_INPUT_DEFAULT_VALUE: Readonly<TaskInput> = {
+  title: '',
+  description: '',
+  startDate: null,
+  endDate: '',
+  statusId: null,
+  assigneeId: null,
+  categoryId: null,
+};
+
 export const taskSchema = baseSchema
   .merge(taskBaseSchema)
   .superRefine(createRefinementIssues);
