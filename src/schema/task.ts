@@ -12,6 +12,7 @@ export const TASK_VALIDATION_MESSAGES = {
   START_DATE_AFTER_END_DATE: '開始日を期限より前の日付を入力してください',
   END_DATE_OVER_MAX_LENGTH: '期限を正しく入力してください',
   END_DATE_INVALID_FORMAT: '期限を正しく入力してください',
+  END_DATE_REQUIRED: '期限を入力してください',
   STATUS_REQUIRED: 'タスクの状態を入力してください',
   STATUS_OVER_MAX_LENGTH: 'タスクの状態は20文字以内で入力してください',
 } as const;
@@ -19,6 +20,7 @@ export const TASK_VALIDATION_MESSAGES = {
 const taskBaseSchema = z.object({
   title: z
     .string({ required_error: TASK_VALIDATION_MESSAGES.TITLE_REQUIRED })
+    .nonempty(TASK_VALIDATION_MESSAGES.TITLE_REQUIRED)
     .max(50, TASK_VALIDATION_MESSAGES.TITLE_OVER_MAX_LENGTH),
   description: z
     .string()
@@ -30,7 +32,7 @@ const taskBaseSchema = z.object({
   endDate: createDateStringSchema({
     maxMessage: TASK_VALIDATION_MESSAGES.END_DATE_INVALID_FORMAT,
     formatMessage: TASK_VALIDATION_MESSAGES.END_DATE_OVER_MAX_LENGTH,
-  }),
+  }).nonempty(TASK_VALIDATION_MESSAGES.END_DATE_REQUIRED),
   statusId: createIdSchema().or(z.null()),
   assigneeId: createIdSchema().or(z.null()),
   categoryId: createIdSchema().or(z.null()),
