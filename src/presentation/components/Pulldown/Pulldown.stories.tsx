@@ -2,16 +2,12 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 
 import { Pulldown as Component } from './Pulldown';
-
-const items = ['grape', 'apple', 'orange'].map((value, index) => ({
-  id: `${index}`,
-  text: value,
-}));
+import { CATEGORY_ITEMS } from 'src/const/categories';
 
 const meta: Meta<typeof Component> = {
   component: Component,
   args: {
-    items,
+    items: CATEGORY_ITEMS,
   },
 };
 
@@ -19,7 +15,9 @@ export default meta;
 type Story = StoryObj<typeof Component>;
 
 export const Docs: Story = {
-  render: () => <Component id="pulldown-docs" name="fruit" items={items} />,
+  render: () => (
+    <Component id="pulldown-docs" name="fruit" items={CATEGORY_ITEMS} />
+  ),
 };
 
 export const Invalid: Story = {
@@ -27,7 +25,7 @@ export const Invalid: Story = {
     <Component
       id="pulldown-invalid"
       name="fruit"
-      items={items}
+      items={CATEGORY_ITEMS}
       isInvalid={true}
     />
   ),
