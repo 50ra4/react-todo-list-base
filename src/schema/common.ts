@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const createIdSchema = () => z.string({ required_error: '' }).uuid();
+export const createIdSchema = () => z.string().nonempty();
 
 export const createDateStringSchema = <T extends string>({
   maxMessage,
