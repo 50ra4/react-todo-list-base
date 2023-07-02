@@ -1,12 +1,11 @@
 import React from 'react';
+import { DateInput } from '../DateInput/DateInput';
 import { FormDescription } from '../FormDescription/FormDescription';
 import { FormError } from '../FormError/FormError';
 import { FormLabel } from '../FormLabel/FormLabel';
-import { TextInput } from '../TextInput/TextInput';
 
-type TextFormProps = {
+type Props = {
   className?: string;
-  type?: 'email' | 'tel' | 'text' | 'url';
   id: string;
   name: string;
   label: string;
@@ -14,22 +13,19 @@ type TextFormProps = {
   descriptions?: string[];
   required?: boolean;
   value?: string;
-  placeholder?: string;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
   onBlur?: React.ChangeEventHandler<HTMLInputElement>;
 };
 
-export const TextForm = React.forwardRef<HTMLInputElement, TextFormProps>(
-  function TextForm(
+export const DateForm = React.forwardRef<HTMLInputElement, Props>(
+  function DateForm(
     {
       className,
-      type,
       id,
       name,
       label,
       required,
       value,
-      placeholder,
       errorMessage,
       descriptions = [],
       onChange,
@@ -56,14 +52,12 @@ export const TextForm = React.forwardRef<HTMLInputElement, TextFormProps>(
           )}
         </div>
         <div className="basis-2/3 mt-1.5 sm:mt-0">
-          <TextInput
+          <DateInput
             className="w-full"
             ref={ref}
-            type={type}
             id={id}
             name={name}
             value={value}
-            placeholder={placeholder}
             isInvalid={!!errorMessage}
             describedId={descriptionId}
             onChange={onChange}

@@ -5,9 +5,11 @@ const TopPage = lazy(() => import('src/presentation/pages/TopPage/TopPage'));
 export const ErrorPage = lazy(
   () => import('src/presentation/pages/ErrorPage/ErrorPage'),
 );
-
 const ContactPage = lazy(
   () => import('src/presentation/pages/ContactPage/ContactPage'),
+);
+const TaskInputPage = lazy(
+  () => import('src/presentation/pages/TaskInputPage/TaskInputPage'),
 );
 
 export const ROUTES: RouteProps[] = [
@@ -22,5 +24,9 @@ export const ROUTES: RouteProps[] = [
   {
     path: '/contact',
     element: <ContactPage />,
+  },
+  {
+    path: '/tasks/new',
+    element: <TaskInputPage />,
   },
 ];

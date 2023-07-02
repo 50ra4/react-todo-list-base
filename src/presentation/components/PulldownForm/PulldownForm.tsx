@@ -2,34 +2,34 @@ import React from 'react';
 import { FormDescription } from '../FormDescription/FormDescription';
 import { FormError } from '../FormError/FormError';
 import { FormLabel } from '../FormLabel/FormLabel';
-import { TextInput } from '../TextInput/TextInput';
+import { Pulldown } from '../Pulldown/Pulldown';
 
-type TextFormProps = {
+type Props = {
   className?: string;
-  type?: 'email' | 'tel' | 'text' | 'url';
   id: string;
   name: string;
   label: string;
+  items: {
+    id: string;
+    text: string;
+  }[];
+  selectedId?: string;
   errorMessage?: string;
   descriptions?: string[];
   required?: boolean;
-  value?: string;
-  placeholder?: string;
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
-  onBlur?: React.ChangeEventHandler<HTMLInputElement>;
+  onChange?: React.ChangeEventHandler<HTMLSelectElement>;
+  onBlur?: React.ChangeEventHandler<HTMLSelectElement>;
 };
 
-export const TextForm = React.forwardRef<HTMLInputElement, TextFormProps>(
-  function TextForm(
+export const PulldownForm = React.forwardRef<HTMLSelectElement, Props>(
+  function PulldownForm(
     {
       className,
-      type,
       id,
       name,
       label,
       required,
-      value,
-      placeholder,
+      items,
       errorMessage,
       descriptions = [],
       onChange,
@@ -56,14 +56,11 @@ export const TextForm = React.forwardRef<HTMLInputElement, TextFormProps>(
           )}
         </div>
         <div className="basis-2/3 mt-1.5 sm:mt-0">
-          <TextInput
-            className="w-full"
+          <Pulldown
             ref={ref}
-            type={type}
             id={id}
             name={name}
-            value={value}
-            placeholder={placeholder}
+            items={items}
             isInvalid={!!errorMessage}
             describedId={descriptionId}
             onChange={onChange}

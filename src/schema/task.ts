@@ -12,13 +12,15 @@ export const TASK_VALIDATION_MESSAGES = {
   START_DATE_AFTER_END_DATE: '開始日を期限より前の日付を入力してください',
   END_DATE_OVER_MAX_LENGTH: '期限を正しく入力してください',
   END_DATE_INVALID_FORMAT: '期限を正しく入力してください',
+  END_DATE_REQUIRED: '期限を入力してください',
   STATUS_REQUIRED: 'タスクの状態を入力してください',
   STATUS_OVER_MAX_LENGTH: 'タスクの状態は20文字以内で入力してください',
 } as const;
 
-export const taskBaseSchema = z.object({
+const taskBaseSchema = z.object({
   title: z
     .string({ required_error: TASK_VALIDATION_MESSAGES.TITLE_REQUIRED })
+    .nonempty(TASK_VALIDATION_MESSAGES.TITLE_REQUIRED)
     .max(50, TASK_VALIDATION_MESSAGES.TITLE_OVER_MAX_LENGTH),
   description: z
     .string()
@@ -30,7 +32,7 @@ export const taskBaseSchema = z.object({
   endDate: createDateStringSchema({
     maxMessage: TASK_VALIDATION_MESSAGES.END_DATE_INVALID_FORMAT,
     formatMessage: TASK_VALIDATION_MESSAGES.END_DATE_OVER_MAX_LENGTH,
-  }),
+  }).nonempty(TASK_VALIDATION_MESSAGES.END_DATE_REQUIRED),
   statusId: createIdSchema().or(z.null()),
   assigneeId: createIdSchema().or(z.null()),
   categoryId: createIdSchema().or(z.null()),
@@ -42,17 +44,38 @@ const isStartDateAfterEndDate = (start: string, end: string) => {
   return isAfter(startDate, endDate);
 };
 
+const createRefinementIssues = <T extends z.infer<typeof taskBaseSchema>>(
+  { startDate, endDate }: T,
+  ctx: z.RefinementCtx,
+): void => {
+  if (!!startDate && isStartDateAfterEndDate(startDate, endDate)) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      message: TASK_VALIDATION_MESSAGES.START_DATE_AFTER_END_DATE,
+      path: ['startDate'],
+    });
+  }
+};
+
+export const taskInputSchema = taskBaseSchema.superRefine(
+  createRefinementIssues,
+);
+
+export type TaskInput = z.infer<typeof taskInputSchema>;
+
+export const TASK_INPUT_DEFAULT_VALUE: Readonly<TaskInput> = {
+  title: '',
+  description: '',
+  startDate: null,
+  endDate: '',
+  statusId: null,
+  assigneeId: null,
+  categoryId: null,
+};
+
 export const taskSchema = baseSchema
   .merge(taskBaseSchema)
-  .superRefine(({ startDate, endDate }, ctx) => {
-    if (!!startDate && isStartDateAfterEndDate(startDate, endDate)) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: TASK_VALIDATION_MESSAGES.START_DATE_AFTER_END_DATE,
-        path: ['startDate'],
-      });
-    }
-  });
+  .superRefine(createRefinementIssues);
 
 export type Task = z.infer<typeof taskSchema>;
 
