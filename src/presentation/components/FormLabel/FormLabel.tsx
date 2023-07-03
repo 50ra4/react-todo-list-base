@@ -24,8 +24,8 @@ export function FormLabel({
     ${className ?? ''}
     `}
     >
-      {!!required && <Badge className="mr-1" color="empathized" label="必須" />}
       {label}
+      {!!required && <Badge className="ml-1" color="empathized" label="必須" />}
     </label>
   );
 }
