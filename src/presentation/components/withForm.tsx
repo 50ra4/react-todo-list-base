@@ -1,7 +1,10 @@
 import React from 'react';
-import { FormDescription } from './FormDescription/FormDescription';
-import { FormError } from './FormError/FormError';
-import { FormLabel } from './FormLabel/FormLabel';
+import {
+  FormContainer,
+  FormLabelWithDescription,
+  InputWithFormError,
+  createDescriptionId,
+} from './FormBase/FormBase';
 import { Expand } from 'src/utils/utilityType';
 
 type InputOnlyProps = {
@@ -40,41 +43,28 @@ export const withForm = <
 ) => {
   const WrapperComponent = React.forwardRef<Element, FormProps<Element, Props>>(
     (
-      { className, label, descriptions = [], errorMessage, required, ...props },
+      { className, label, descriptions, errorMessage, required, ...props },
       ref,
     ) => {
-      const descriptionId = `${props.id}-description`;
-
       return (
-        <div
-          className={`sm:flex flex-row justify-between justify-items-center ${
-            className ?? ''
-          }`}
-        >
-          <div className="basis-1/3 sm:pt-2.5">
-            <FormLabel htmlFor={props.id} required={required} label={label} />
-            {descriptions.length > 0 && (
-              <FormDescription
-                className="pt-1.5 sm:px-1.5"
-                id={descriptionId}
-                descriptions={descriptions}
-              />
-            )}
-          </div>
-          <div className="basis-2/3 mt-1.5 sm:mt-0">
+        <FormContainer className={className}>
+          <FormLabelWithDescription
+            id={props.id}
+            required={required}
+            label={label}
+            descriptions={descriptions}
+          />
+          <InputWithFormError errorMessage={errorMessage}>
             <Component
               // FIXME:
               {...(props as unknown as Props)}
               className="w-full"
               ref={ref}
               isInvalid={!!errorMessage}
-              describedId={descriptionId}
+              describedId={createDescriptionId(props.id)}
             />
-            {!!errorMessage && (
-              <FormError className="mt-1.5" message={errorMessage} />
-            )}
-          </div>
-        </div>
+          </InputWithFormError>
+        </FormContainer>
       );
     },
   );
