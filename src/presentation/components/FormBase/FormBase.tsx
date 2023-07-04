@@ -77,3 +77,30 @@ export function InputWithFormError({
     </div>
   );
 }
+
+export function FormBase({
+  className,
+  id,
+  label,
+  required,
+  descriptions,
+  errorMessage,
+  render,
+}: FormBaseProps & {
+  render: (descriptionId: string) => JSX.Element;
+}) {
+  const descriptionId = createDescriptionId(id);
+  return (
+    <FormContainer className={className}>
+      <FormLabelWithDescription
+        id={id}
+        required={required}
+        label={label}
+        descriptions={descriptions}
+      />
+      <InputWithFormError errorMessage={errorMessage}>
+        {render(descriptionId)}
+      </InputWithFormError>
+    </FormContainer>
+  );
+}
