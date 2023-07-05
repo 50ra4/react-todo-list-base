@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  FormContainer,
-  FormLabelWithDescription,
-  InputWithFormError,
-  createDescriptionId,
-} from './FormBase/FormBase';
+import { FormBase } from './FormBase/FormBase';
 import { Expand } from 'src/utils/utilityType';
 
 type InputOnlyProps = {
@@ -47,24 +42,22 @@ export const withForm = <
       ref,
     ) => {
       return (
-        <FormContainer className={className}>
-          <FormLabelWithDescription
-            id={props.id}
-            required={required}
-            label={label}
-            descriptions={descriptions}
-          />
-          <InputWithFormError errorMessage={errorMessage}>
+        <FormBase
+          className={className}
+          id={props.id}
+          required={required}
+          label={label}
+          descriptions={descriptions}
+          render={(descriptionId) => (
             <Component
-              // FIXME:
               {...(props as unknown as Props)}
               className="w-full"
               ref={ref}
               isInvalid={!!errorMessage}
-              describedId={createDescriptionId(props.id)}
+              describedId={descriptionId}
             />
-          </InputWithFormError>
-        </FormContainer>
+          )}
+        />
       );
     },
   );
