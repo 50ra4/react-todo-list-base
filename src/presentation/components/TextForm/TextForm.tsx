@@ -1,25 +1,17 @@
 import React from 'react';
-import { FormDescription } from '../FormDescription/FormDescription';
-import { FormError } from '../FormError/FormError';
-import { FormLabel } from '../FormLabel/FormLabel';
+import { FormBaseProps, FormBase } from '../FormBase/FormBase';
 import { TextInput } from '../TextInput/TextInput';
 
-type TextFormProps = {
-  className?: string;
-  type?: 'email' | 'tel' | 'text' | 'url';
-  id: string;
+type TextFormProps = FormBaseProps & {
   name: string;
-  label: string;
-  errorMessage?: string;
-  descriptions?: string[];
-  required?: boolean;
+  type?: 'email' | 'tel' | 'text' | 'url';
   value?: string;
   placeholder?: string;
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
-  onBlur?: React.ChangeEventHandler<HTMLInputElement>;
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
+  onBlur: React.ChangeEventHandler<HTMLInputElement>;
 };
 
-export const TextForm = React.forwardRef<HTMLInputElement, TextFormProps>(
+const NoMemorizedTextForm = React.forwardRef<HTMLInputElement, TextFormProps>(
   function TextForm(
     {
       className,
@@ -31,31 +23,20 @@ export const TextForm = React.forwardRef<HTMLInputElement, TextFormProps>(
       value,
       placeholder,
       errorMessage,
-      descriptions = [],
+      descriptions,
       onChange,
       onBlur,
     },
     ref,
   ) {
-    const descriptionId = `${id}-description`;
-
     return (
-      <div
-        className={`sm:flex flex-row justify-between justify-items-center ${
-          className ?? ''
-        }`}
-      >
-        <div className="basis-1/3 sm:pt-2.5">
-          <FormLabel htmlFor={id} required={required} label={label} />
-          {descriptions.length > 0 && (
-            <FormDescription
-              className="pt-1.5 sm:px-1.5"
-              id={descriptionId}
-              descriptions={descriptions}
-            />
-          )}
-        </div>
-        <div className="basis-2/3 mt-1.5 sm:mt-0">
+      <FormBase
+        className={className}
+        id={id}
+        label={label}
+        required={required}
+        descriptions={descriptions}
+        render={({ descriptionId }) => (
           <TextInput
             className="w-full"
             ref={ref}
@@ -69,11 +50,10 @@ export const TextForm = React.forwardRef<HTMLInputElement, TextFormProps>(
             onChange={onChange}
             onBlur={onBlur}
           />
-          {!!errorMessage && (
-            <FormError className="mt-1.5" message={errorMessage} />
-          )}
-        </div>
-      </div>
+        )}
+      />
     );
   },
 );
+
+export const TextForm = React.memo(NoMemorizedTextForm);
