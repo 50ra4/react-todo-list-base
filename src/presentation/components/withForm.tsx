@@ -28,6 +28,9 @@ type FormProps<
   required?: boolean;
 };
 
+/**
+ * @deprecated use FormBase instead
+ */
 export const withForm = <
   Element extends HTMLElement,
   Props extends InputProps<Element> = any,
