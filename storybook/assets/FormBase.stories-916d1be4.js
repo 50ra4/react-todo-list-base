@@ -1,0 +1,6 @@
+import{j as o}from"./jsx-runtime-6eef64cc.js";import{F as s}from"./FormBase-3825f0e1.js";import"./index-c013ead5.js";import"./_commonjsHelpers-725317a4.js";import"./FormDescription-5a3558a3.js";import"./FormError-86485f5e.js";import"./FormLabel-41411d0e.js";import"./Badge-4b5a1a6f.js";const t={id:"date-form",descriptions:["今日の日付を入力してください"],label:"成約日",required:!0,render:()=>o.jsx("div",{className:"border border-gray-300 border-solid rounded-sm h-11 text-lg flex items-center px-0.5",children:"Render Input"})},R={component:s,args:{...t}},r={render:()=>o.jsx(s,{...t})},e={render:()=>o.jsx(s,{...t,id:"date-form-error",errorMessage:"今日の日付を入力してください"})};var a,d,m;r.parameters={...r.parameters,docs:{...(a=r.parameters)==null?void 0:a.docs,source:{originalSource:`{
+  render: () => <Component {...PROPS} />
+}`,...(m=(d=r.parameters)==null?void 0:d.docs)==null?void 0:m.source}}};var n,p,c;e.parameters={...e.parameters,docs:{...(n=e.parameters)==null?void 0:n.docs,source:{originalSource:`{
+  render: () => <Component {...PROPS} id="date-form-error" errorMessage="今日の日付を入力してください" />
+}`,...(c=(p=e.parameters)==null?void 0:p.docs)==null?void 0:c.source}}};const S=["Docs","Error"];export{r as Docs,e as Error,S as __namedExportsOrder,R as default};
+//# sourceMappingURL=FormBase.stories-916d1be4.js.map

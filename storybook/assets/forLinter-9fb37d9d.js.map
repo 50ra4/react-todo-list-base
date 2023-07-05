@@ -1,0 +1,1 @@
+{"version":3,"file":"forLinter-9fb37d9d.js","sources":["../../../src/utils/forLinter.ts"],"sourcesContent":["export const doNothing = () => {\n  // do nothing\n};\n"],"names":["doNothing"],"mappings":"AAAO,MAAMA,EAAY,IAAM,CAE/B"}
