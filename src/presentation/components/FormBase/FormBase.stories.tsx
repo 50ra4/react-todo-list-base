@@ -1,22 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 
-import { TextForm as Component } from './TextForm';
-import { doNothing } from 'src/utils/forLinter';
+import { FormBase as Component } from './FormBase';
 
 type Props = React.ComponentProps<typeof Component>;
 
 const PROPS: Props = {
-  type: 'text',
-  id: 'katakana-name',
-  name: 'katakana name',
-  value: 'スズキイチロウ',
-  descriptions: ['名前をカタカナで入力してください'],
-  label: 'お名前(カタカナ)',
-  placeholder: 'ナナシノゴンベエ',
+  id: 'date-form',
+  descriptions: ['今日の日付を入力してください'],
+  label: '成約日',
   required: true,
-  onChange: doNothing,
-  onBlur: doNothing,
+  render: () => (
+    <div className="border border-gray-300 border-solid rounded-sm h-11 text-lg flex items-center px-0.5">
+      Render Input
+    </div>
+  ),
 };
 
 const meta: Meta<typeof Component> = {
@@ -35,8 +33,8 @@ export const Error: Story = {
   render: () => (
     <Component
       {...PROPS}
-      value="鈴木一郎"
-      errorMessage="カタカナ以外の文字が含まれています"
+      id="date-form-error"
+      errorMessage="今日の日付を入力してください"
     />
   ),
 };

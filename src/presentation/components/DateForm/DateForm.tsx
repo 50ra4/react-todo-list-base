@@ -1,23 +1,16 @@
 import React from 'react';
 import { DateInput } from '../DateInput/DateInput';
-import { FormDescription } from '../FormDescription/FormDescription';
-import { FormError } from '../FormError/FormError';
-import { FormLabel } from '../FormLabel/FormLabel';
+import { FormBase, FormBaseProps } from '../FormBase/FormBase';
 
-type Props = {
-  className?: string;
-  id: string;
+type Props = FormBaseProps & {
   name: string;
-  label: string;
-  errorMessage?: string;
-  descriptions?: string[];
-  required?: boolean;
   value?: string;
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
-  onBlur?: React.ChangeEventHandler<HTMLInputElement>;
+  range?: { min?: string; max?: string };
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
+  onBlur: React.ChangeEventHandler<HTMLInputElement>;
 };
 
-export const DateForm = React.forwardRef<HTMLInputElement, Props>(
+const NoMemorizedDateForm = React.forwardRef<HTMLInputElement, Props>(
   function DateForm(
     {
       className,
@@ -25,49 +18,37 @@ export const DateForm = React.forwardRef<HTMLInputElement, Props>(
       name,
       label,
       required,
-      value,
       errorMessage,
-      descriptions = [],
+      descriptions,
+      range: { min, max } = {},
       onChange,
       onBlur,
     },
     ref,
   ) {
-    const descriptionId = `${id}-description`;
-
     return (
-      <div
-        className={`sm:flex flex-row justify-between justify-items-center ${
-          className ?? ''
-        }`}
-      >
-        <div className="basis-1/3 sm:pt-2.5">
-          <FormLabel htmlFor={id} required={required} label={label} />
-          {descriptions.length > 0 && (
-            <FormDescription
-              className="pt-1.5 sm:px-1.5"
-              id={descriptionId}
-              descriptions={descriptions}
-            />
-          )}
-        </div>
-        <div className="basis-2/3 mt-1.5 sm:mt-0">
+      <FormBase
+        id={id}
+        className={className}
+        label={label}
+        required={required}
+        descriptions={descriptions}
+        errorMessage={errorMessage}
+        render={({ descriptionId }) => (
           <DateInput
-            className="w-full"
             ref={ref}
             id={id}
             name={name}
-            value={value}
-            isInvalid={!!errorMessage}
+            min={min}
+            max={max}
             describedId={descriptionId}
             onChange={onChange}
             onBlur={onBlur}
           />
-          {!!errorMessage && (
-            <FormError className="mt-1.5" message={errorMessage} />
-          )}
-        </div>
-      </div>
+        )}
+      />
     );
   },
 );
+
+export const DateForm = React.memo(NoMemorizedDateForm);

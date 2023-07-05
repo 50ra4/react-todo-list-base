@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 
 import { DateForm as Component } from './DateForm';
+import { doNothing } from 'src/utils/forLinter';
 
 type Props = React.ComponentProps<typeof Component>;
 
@@ -11,6 +12,8 @@ const PROPS: Props = {
   descriptions: ['今日の日付を入力してください'],
   label: '成約日',
   required: true,
+  onChange: doNothing,
+  onBlur: doNothing,
 };
 
 const meta: Meta<typeof Component> = {
