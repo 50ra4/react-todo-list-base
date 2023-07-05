@@ -41,6 +41,7 @@ const NoMemorizedDateForm = React.forwardRef<HTMLInputElement, Props>(
             name={name}
             min={min}
             max={max}
+            isInvalid={!!errorMessage}
             describedId={descriptionId}
             onChange={onChange}
             onBlur={onBlur}

@@ -35,6 +35,7 @@ const NoMemorizedPulldownForm = React.forwardRef<HTMLSelectElement, Props>(
         id={id}
         label={label}
         required={required}
+        errorMessage={errorMessage}
         descriptions={descriptions}
         render={({ descriptionId }) => (
           <Pulldown
