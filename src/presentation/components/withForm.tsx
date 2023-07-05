@@ -48,7 +48,7 @@ export const withForm = <
           required={required}
           label={label}
           descriptions={descriptions}
-          render={(descriptionId) => (
+          render={({ descriptionId }) => (
             <Component
               {...(props as unknown as Props)}
               className="w-full"
