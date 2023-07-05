@@ -5,6 +5,7 @@ import { Button } from '@/components/Button/Button';
 import { DateForm } from '@/components/DateForm/DateForm';
 import { PulldownForm } from '@/components/PulldownForm/PulldownForm';
 import { TextForm } from '@/components/TextForm/TextForm';
+import { TextareaForm } from '@/components/TextareaForm/TextareaForm';
 import { useAssignees } from 'src/hooks/useAssignees';
 import { useCategories } from 'src/hooks/useCategories';
 import {
@@ -76,12 +77,11 @@ function TaskInputPage() {
             label="カテゴリ"
             items={categories}
           />
-          {/* TODO: Textareaに変更する */}
-          <TextForm
+          <TextareaForm
             {...register('description')}
             errorMessage={errors.description?.message}
             id="description"
-            label="説明"
+            label="詳細"
           />
           <div className="flex mt-4">
             <Button type="submit" color="secondary" disabled={!isValid}>
