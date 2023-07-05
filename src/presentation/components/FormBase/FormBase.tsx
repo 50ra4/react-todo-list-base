@@ -12,32 +12,9 @@ export type FormBaseProps = {
   errorMessage?: string;
 };
 
-export const separateFormBaseProps = <T extends FormBaseProps>({
-  className,
-  id,
-  label,
-  required,
-  descriptions,
-  errorMessage,
-  ...otherProps
-}: T): {
-  formBaseProps: FormBaseProps;
-  otherProps: Omit<T, keyof FormBaseProps>;
-} => {
-  const formBaseProps = {
-    className,
-    id,
-    label,
-    required,
-    descriptions,
-    errorMessage,
-  };
-  return { formBaseProps, otherProps };
-};
+const createDescriptionId = (id: string) => `${id}-description`;
 
-export const createDescriptionId = (id: string) => `${id}-description`;
-
-export function FormContainer({
+function FormContainer({
   className,
   children,
 }: {
@@ -55,7 +32,7 @@ export function FormContainer({
   );
 }
 
-export function FormLabelWithDescription({
+function FormLabelWithDescription({
   className,
   id,
   label,
@@ -82,7 +59,7 @@ export function FormLabelWithDescription({
   );
 }
 
-export function InputWithFormError({
+function InputWithFormError({
   className,
   errorMessage,
   children,

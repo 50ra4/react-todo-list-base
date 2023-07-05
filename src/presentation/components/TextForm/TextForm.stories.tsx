@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 
 import { TextForm as Component } from './TextForm';
+import { doNothing } from 'src/utils/forLinter';
 
 type Props = React.ComponentProps<typeof Component>;
 
@@ -14,6 +15,8 @@ const PROPS: Props = {
   label: 'お名前(カタカナ)',
   placeholder: 'ナナシノゴンベエ',
   required: true,
+  onChange: doNothing,
+  onBlur: doNothing,
 };
 
 const meta: Meta<typeof Component> = {
