@@ -35,6 +35,7 @@ const NoMemorizedTextForm = React.forwardRef<HTMLInputElement, TextFormProps>(
         id={id}
         label={label}
         required={required}
+        errorMessage={errorMessage}
         descriptions={descriptions}
         render={({ descriptionId }) => (
           <TextInput
