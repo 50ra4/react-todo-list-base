@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 
 import { TextareaForm as Component } from './TextareaForm';
-import { doNothing } from 'src/utils/forLinter';
+import { doNothing } from '@/utils/forLinter';
 
 type Props = React.ComponentProps<typeof Component>;
 

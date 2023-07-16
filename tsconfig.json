@@ -17,8 +17,7 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "@/components/*": ["src/presentation/components/*"],
-      "src/*": ["src/*"]
+      "@/*": ["src/*"]
     },
     "noErrorTruncation": true
   },

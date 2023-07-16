@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormBase } from './FormBase/FormBase';
-import { Expand } from 'src/utils/utilityType';
+import { Expand } from '@/utils/utilityType';
 
 type InputOnlyProps = {
   isInvalid?: boolean;

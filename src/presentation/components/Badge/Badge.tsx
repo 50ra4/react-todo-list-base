@@ -1,5 +1,5 @@
 import React from 'react';
-import { joinClassNames } from 'src/utils/className';
+import { joinClassNames } from '@/utils/className';
 
 type Props = {
   className?: string;

@@ -6,7 +6,7 @@ export type IconProps = {
 };
 
 /**
- * @see https://github.com/mui-org/material-ui/blob/next/packages/material-ui/src/SvgIcon/SvgIcon.js
+ * @see https://github.com/mui-org/material-ui/blob/next/packages/material-ui/@/SvgIcon/SvgIcon.js
  */
 export function SvgIcon({
   className,

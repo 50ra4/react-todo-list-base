@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 
 import { Pulldown as Component } from './Pulldown';
-import { CATEGORY_ITEMS } from 'src/const/category';
+import { CATEGORY_ITEMS } from '@/const/category';
 
 const meta: Meta<typeof Component> = {
   component: Component,

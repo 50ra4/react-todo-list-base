@@ -1,13 +1,13 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Button } from '@/components/Button/Button';
-import { TextForm } from '@/components/TextForm/TextForm';
+import { Button } from '@/presentation/components/Button/Button';
+import { TextForm } from '@/presentation/components/TextForm/TextForm';
 import {
   contactSchema,
   Contact,
   CONTACT_DEFAULT_VALUE,
-} from 'src/schema/contact';
+} from '@/schema/contact';
 
 const onValid = (contact: Contact) => {
   console.log('contact', contact);
