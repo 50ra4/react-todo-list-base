@@ -1,20 +1,24 @@
 import React, { Suspense } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { ROUTES, ErrorPage } from './routes';
+
+const router = createBrowserRouter(
+  [
+    ...ROUTES.map(({ path, element }) => ({
+      path,
+      element,
+    })),
+    { path: '*', element: <ErrorPage /> },
+  ],
+  { basename: import.meta.env.BASE_URL },
+);
 
 export function App() {
   return (
     <div className="bg-gray-50 min-h-screen">
-      <BrowserRouter basename={import.meta.env.BASE_URL}>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Routes>
-            {ROUTES.map(({ path, element }) => (
-              <Route key={path} path={path} element={element} />
-            ))}
-            <Route path="*" element={<ErrorPage />} />
-          </Routes>
-        </Suspense>
-      </BrowserRouter>
+      <Suspense fallback={<div>Loading...</div>}>
+        <RouterProvider router={router} />
+      </Suspense>
     </div>
   );
 }
