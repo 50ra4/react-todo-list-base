@@ -1,18 +1,18 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Button } from '@/components/Button/Button';
-import { DateForm } from '@/components/DateForm/DateForm';
-import { PulldownForm } from '@/components/PulldownForm/PulldownForm';
-import { TextForm } from '@/components/TextForm/TextForm';
-import { TextareaForm } from '@/components/TextareaForm/TextareaForm';
-import { useAssignees } from 'src/hooks/useAssignees';
-import { useCategories } from 'src/hooks/useCategories';
+import { useAssignees } from '@/hooks/useAssignees';
+import { useCategories } from '@/hooks/useCategories';
+import { Button } from '@/presentation/components/Button/Button';
+import { DateForm } from '@/presentation/components/DateForm/DateForm';
+import { PulldownForm } from '@/presentation/components/PulldownForm/PulldownForm';
+import { TextForm } from '@/presentation/components/TextForm/TextForm';
+import { TextareaForm } from '@/presentation/components/TextareaForm/TextareaForm';
 import {
   taskInputSchema,
   TaskInput,
   TASK_INPUT_DEFAULT_VALUE,
-} from 'src/schema/task';
+} from '@/schema/task';
 
 const onValid = (data: TaskInput) => {
   console.log(data);

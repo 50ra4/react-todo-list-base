@@ -1,4 +1,4 @@
-import { ASSIGNEE_ITEMS } from 'src/const/assignee';
+import { ASSIGNEE_ITEMS } from '@/const/assignee';
 
 /**
  * TODO: 固定値を返さないように修正する

@@ -1,7 +1,7 @@
 import isAfter from 'date-fns/isAfter';
 import { z } from 'zod';
 import { baseSchema, createDateStringSchema, createIdSchema } from './common';
-import { dateStringToDate } from 'src/utils/date';
+import { dateStringToDate } from '@/utils/date';
 
 export const TASK_VALIDATION_MESSAGES = {
   TITLE_REQUIRED: 'タイトルを入力してください',
