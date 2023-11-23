@@ -1,6 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import React from 'react';
-import { useForm } from 'react-hook-form';
+import React, { useCallback, useRef } from 'react';
+import { FieldPath, useForm } from 'react-hook-form';
+import { z } from 'zod';
 import { useAssignees } from '@/hooks/useAssignees';
 import { useCategories } from '@/hooks/useCategories';
 import { Button } from '@/presentation/components/Button/Button';
@@ -20,17 +21,43 @@ const onValid = (data: TaskInput) => {
 };
 
 function TaskInputPage() {
+  const errorsRef = useRef([] as FieldPath<z.output<typeof taskInputSchema>>[]);
+
   const {
     register,
     formState: { errors, isValid },
     handleSubmit,
+    setFocus,
   } = useForm<TaskInput>({
-    resolver: zodResolver(taskInputSchema),
+    resolver: (data, context, options) => {
+      const result = taskInputSchema.safeParse(data);
+      const error = result.success
+        ? []
+        : result.error.errors.map(
+            ({ path }) =>
+              path.join('.') as FieldPath<z.output<typeof taskInputSchema>>,
+          );
+      errorsRef.current = error;
+      console.log({ error, data, context, options });
+      return zodResolver(taskInputSchema)(data, context, options);
+    },
     defaultValues: TASK_INPUT_DEFAULT_VALUE,
   });
 
   const { categories } = useCategories();
   const { assignees } = useAssignees();
+
+  const overrideRegister: typeof register = useCallback(
+    (...args) => {
+      const { onBlur, onChange, ...restProps } = register(...args);
+      const onChangeHandler: typeof onChange = (e) => {
+        console.log(e);
+        return onChange(e);
+      };
+      return { onChange: onChangeHandler, onBlur, ...restProps };
+    },
+    [register],
+  );
 
   return (
     <main className="flex justify-center">
@@ -41,17 +68,21 @@ function TaskInputPage() {
         <form
           aria-labelledby="form-title"
           className="[&>*]:mb-2"
-          onSubmit={handleSubmit(onValid)}
+          onSubmit={handleSubmit(onValid, (...args) => {
+            console.log(args);
+            const [path] = errorsRef.current;
+            setFocus(path);
+          })}
         >
           <TextForm
-            {...register('title')}
+            {...overrideRegister('title')}
             errorMessage={errors.title?.message}
             id="title"
             label="タスク名"
             required={true}
           />
           <DateForm
-            {...register('startDate')}
+            {...overrideRegister('startDate')}
             errorMessage={errors.startDate?.message}
             id="start-date"
             label="開始日"
@@ -64,7 +95,7 @@ function TaskInputPage() {
             required={true}
           />
           <PulldownForm
-            {...register('assigneeId')}
+            {...overrideRegister('assigneeId')}
             errorMessage={errors.assigneeId?.message}
             id="assignee"
             label="担当者"
@@ -84,7 +115,7 @@ function TaskInputPage() {
             label="詳細"
           />
           <div className="flex mt-4">
-            <Button type="submit" color="secondary" disabled={!isValid}>
+            <Button type="submit" color="secondary">
               追加する
             </Button>
           </div>
